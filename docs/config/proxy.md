@@ -23,7 +23,7 @@ You will need to restart your app with `lando restart` to apply the changes. You
 Configuration
 -------------
 
-By default, proxying is turned on and will try to bind to ports `80` and `443`. If these ports are taken, Lando will attempt to bind to alternate ports. These things are all configurable by editing the [Lando global configuration](./config.yml).
+By default, proxying is turned on and will try to bind to ports `80` and `443`. If these ports are taken, Lando will attempt to bind to alternate ports. These things are all configurable by editing the [Lando global configuration .config.yml](./config.html).
 
 ```yml
 proxy: ON
@@ -61,6 +61,25 @@ Here is an example:
 # Get my custom domain to work
 127.0.0.1 billy.dee.williams
 ```
+
+Accessing Lando from Other Devices on Your Local Network
+--------------------------------------------------------
+
+You may want to use another device (e.g., a smartphone or tablet) to test your Lando app.  You can access your lando app easily from another device as follows.
+
+First, get the IP address of the machine running lando.
+
+**Windows**
+
+Open a command prompt and enter the command `ipconfig /all` and look for the "IPv4 Address" for the network adapter you use to connect to the Internet.  Make sure NOT to use the IP address of the Docker network adapter.  It should be a number like `192.168.0.123`.
+
+**macOS**
+
+Open System Preferences, Network, and then choose the network adapter you are using to connect to the Internet (Ethernet or Wireless).  The local IP address will then be displayed.
+
+Next, get the port of your lando app.  You can do this by running `lando info` from a command prompt and looking for the URL to your site, which should look something like this: `http://localhost:33333`.  In this case, `33333` is the port number.
+
+You can now visit your lando app from other devices by going to `IP address: Port number`.  (Example: `http://192.168.0.123:33333`)
 
 Checking Proxy Routes
 ---------------------
